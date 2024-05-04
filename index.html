@@ -7,9 +7,31 @@
 </head>
 <body>
     <script>
-        console.log("hello world!")
+        // console.log("hello world!")
 
-        
+        //function for get command from PC
+        function getComputerChoice() {
+            sym = Math.floor(Math.random() * (3 - 0) + 0)
+            
+            switch (sym) {
+                case 0:
+                    console.log("Paper")
+                    break
+                case 1:
+                    console.log("Rock")
+                    break
+                case 2:
+                    console.log("Scissors")
+                    break
+            }
+        }
+
+        //function for get human choice
+        function getHumanChoice() {
+            console.log(userInput = prompt("You Choice"))
+        }
+
+        getHumanChoice()
     </script>
 </body>
 </html>
