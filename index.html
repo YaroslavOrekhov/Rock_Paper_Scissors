@@ -7,31 +7,62 @@
 </head>
 <body>
     <script>
-        // console.log("hello world!")
+        // console.log("hello world!"
 
         //function for get command from PC
         function getComputerChoice() {
-            sym = Math.floor(Math.random() * (3 - 0) + 0)
+            res = Math.floor(Math.random() * (3 - 0) + 0)
             
-            switch (sym) {
+            switch (res) {
                 case 0:
-                    console.log("Paper")
-                    break
+                    return "paper"                
                 case 1:
-                    console.log("Rock")
-                    break
+                    return "rock"                    
                 case 2:
-                    console.log("Scissors")
-                    break
+                    return "scissors"                    
             }
         }
 
         //function for get human choice
         function getHumanChoice() {
-            console.log(userInput = prompt("You Choice"))
+            res = prompt("input rock, paper or scissors")
+            res = res.toLowerCase()
+            res = res.replace(/ /g,'')
+            // console.log(res)
+            if (res == "rock"){
+                return "rock"
+            } 
+            else if (res == "paper"){
+                return "paper"
+            } 
+            else if (res == "scissors"){
+                return "scissors"
+            }
+            else {
+                getHumanChoice()
+            }
         }
 
-        getHumanChoice()
+        function playRound(comChoice, userChoice) {
+            let win = "You win!"
+            let lose = "You lose"
+            if (userChoice == comChoice) {
+                console.log("A draw game")
+            } else if (userChoice == "paper" && comChoice == "rock"){
+                console.log(win)
+            } else if (userChoice == "rock" && comChoice == "scissors"){
+                console.log(win)
+            } else if (userChoice == "scissors" && comChoice == "paper"){
+                console.log(win)
+            } else {
+                console.log(lose)
+            }
+        }
+
+        let comChoice = getComputerChoice()
+        let userChoice = getHumanChoice()
+
+        playRound(comChoice, userChoice)
     </script>
 </body>
 </html>
