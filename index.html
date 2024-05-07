@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
 </head>
 <body>
+    <div class="container">        
+        <div class="userContent">
+            <h2>You choice</h2>
+            <div class="userInput">
+                <button onclick="playRound('paper')">Paper</button>
+                <button onclick="playRound('rock')">Rock</button>
+                <button onclick="playRound('scissors')">Scissors</button>
+            </div>
+        </div>
+        <div class="computerContent">
+            <h2>Computer choice</h2>
+            <div id="computerChoiceResult">********</div>
+        </div>
+        <div class="result">
+            <h1 id="gameResult"></h1>
+        </div>
+    </div>
+
     <script>
         // console.log("hello world!"
 
-        //function for get command from PC
+        // function for get command from PC
         function getComputerChoice() {
             res = Math.floor(Math.random() * (3 - 0) + 0)
             
@@ -23,7 +41,7 @@
             }
         }
 
-        //function for get human choice
+        // function for get human choice
         function getHumanChoice() {
             res = prompt("input rock, paper or scissors")
             res = res.toLowerCase()
@@ -43,26 +61,39 @@
             }
         }
 
-        function playRound(comChoice, userChoice) {
-            let win = "You win!"
-            let lose = "You lose"
+        function playRound(userChoice) {
+            let messageWin = "You win"
+            let messageLose = "You lose"
+            let messageDraw = "A draw game"
+            let result = ""
+            let comChoice = getComputerChoice()
+            
             if (userChoice == comChoice) {
-                console.log("A draw game")
+                result = messageDraw
             } else if (userChoice == "paper" && comChoice == "rock"){
-                console.log(win)
+                result = messageWin
             } else if (userChoice == "rock" && comChoice == "scissors"){
-                console.log(win)
+                result = messageWin
             } else if (userChoice == "scissors" && comChoice == "paper"){
-                console.log(win)
+                result = messageWin
             } else {
-                console.log(lose)
+                result = messageLose
             }
+
+            resultArea = document.getElementById("gameResult")
+            resultArea.textContent = result   
+
+            compResult = document.getElementById('computerChoiceResult')
+            compResult.innerHTML = comChoice
+            
+
+            console.log("computer choice: ", comChoice, "; user choice: ", userChoice)            
         }
 
         let comChoice = getComputerChoice()
-        let userChoice = getHumanChoice()
+        // let userChoice = getHumanChoice()
 
-        playRound(comChoice, userChoice)
+        // playRound(comChoice, userChoice)
     </script>
 </body>
 </html>
